@@ -15,7 +15,7 @@ public class Calculator_Emulator {
     @BeforeMethod
     public void setUp() throws MalformedURLException {
         DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setCapability("deviceName", "emulator-5554");
+        capabilities.setCapability("deviceName", "emulator-5556");
         capabilities.setCapability("platformVersion", "9.0");
         capabilities.setCapability("platformName", "Android");
         capabilities.setCapability("appPackage", "com.android.calculator2");
