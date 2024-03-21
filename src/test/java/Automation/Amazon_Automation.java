@@ -11,6 +11,7 @@ import org.testng.annotations.Test;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.concurrent.TimeUnit;
 
 public class Amazon_Automation {
     AndroidDriver driver;
@@ -24,22 +25,19 @@ public class Amazon_Automation {
         ds.setCapability("appActivity","com.amazon.mShop.home.HomeActivity");
         driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), ds);
         System.out.println("Started . . . . .");
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
 
     @Test
     public void skip_login() throws InterruptedException {
-        Thread.sleep(10000);
         WebElement skip = driver.findElement(By.id("com.amazon.mShop.android.shopping:id/skip_sign_in_button"));
         skip.click();
-        Thread.sleep(25000);
         WebElement search = driver.findElement(By.id("com.amazon.mShop.android.shopping:id/chrome_search_hint_view"));
         search.click();
-        Thread.sleep(2000);
         WebElement search_data = driver.findElement(By.id("com.amazon.mShop.android.shopping:id/rs_search_src_text"));
 
         Actions action = new Actions(driver);
         action.sendKeys(search_data,"boat").perform();
-        Thread.sleep(2000);
         action.sendKeys(search_data, Keys.ENTER).perform();
 
     }
